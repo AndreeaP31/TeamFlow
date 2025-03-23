@@ -23,6 +23,25 @@
         <label for="password" class="form-label">Password</label>
         <input [(ngModel)]="registerRequest.password" name="password" type="password" class="form-control" id="password" placeholder="Password" required />
       </div>
+
+      <div class="role-selector mb-3 text-center">
+        <label class="form-label d-block mb-2">Select role</label>
+        <button
+          type="button"
+          [ngClass]="{ 'active-role': registerRequest.role === 'TASK_MANAGER' }"
+          (click)="registerRequest.role = 'TASK_MANAGER'">
+          Task Manager
+        </button>
+
+        <button
+          type="button"
+          [ngClass]="{ 'active-role': registerRequest.role === 'TEAM_MEMBER' }"
+          (click)="registerRequest.role = 'TEAM_MEMBER'">
+          Team Member
+        </button>
+      </div>
+
+      <!-- BUTOANE FINALE -->
       <div class="d-flex justify-content-between mb-3">
         <button type="submit" class="btn custom-btn">Create account</button>
         <div>
@@ -32,6 +51,7 @@
           </button>
         </div>
       </div>
+
     </form>
   </div>
 </div>

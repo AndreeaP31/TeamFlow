@@ -23,3 +23,26 @@
   border-radius: 6px;
   border: none;
 }
+.role-selector {
+  display: flex;
+  justify-content: center;
+
+  button {
+    padding: 8px 16px;
+    margin: 0 10px;
+    border-radius: 20px;
+    border: 2px solid #7b2cbf;
+    background-color: white;
+    color: #7b2cbf;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .active-role {
+    background-color: #9d4edd;
+    color: white;
+    border-color: #9d4edd;
+  }
+}
+

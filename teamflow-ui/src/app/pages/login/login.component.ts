@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AuthenticationRequest} from '../../services/models/authentication-request';
 import {AuthenticationService} from '../../services/services/authentication.service';
 import {Router} from '@angular/router';
-import {TokenService} from '../../services/token/token.service';
+import {TokenService} from '../../token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -26,8 +26,16 @@ export class LoginComponent{
       body: this.authRequest
     }).subscribe({
       next: (res) => {
-        this.tokenService.token=res.token as string;
-        this.router.navigate(['home']);
+        this.tokenService.token = res.token as string;
+
+        if (this.tokenService.isTaskManager()) {
+          this.router.navigate(['/task-manager-home']);
+        } else if (this.tokenService.isTeamMember()) {
+          this.router.navigate(['/team-member-home']);
+        } else {
+          this.router.navigate(['/home']); // fallback
+        }
+
       },
       error: (err) => {
         console.log(err);

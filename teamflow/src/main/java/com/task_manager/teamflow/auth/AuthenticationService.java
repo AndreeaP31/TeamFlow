@@ -38,8 +38,8 @@ public class AuthenticationService {
     private String activationUrl;
 
     public void register(RegistrationRequest request) throws MessagingException {
-        var userRole=roleRepository.findByName("USER")
-                .orElseThrow(()->new IllegalStateException("ROLE USER was not found"));
+        var userRole = roleRepository.findByName(request.getRole().toUpperCase())
+                .orElseThrow(() -> new IllegalStateException("Role " + request.getRole() + " not found"));
         var user=User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())

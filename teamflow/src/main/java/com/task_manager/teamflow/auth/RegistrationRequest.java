@@ -27,4 +27,8 @@ public class RegistrationRequest {
     @NotBlank(message="Password is mandatory")
     @Size(min=5, message="Password should be 5 characters minimum")
     private String password;
+
+    @NotBlank(message = "Role is mandatory")
+    private String role;
+
 }

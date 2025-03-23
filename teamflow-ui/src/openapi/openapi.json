@@ -102,7 +102,8 @@
           "email",
           "firstname",
           "lastname",
-          "password"
+          "password",
+          "role"
         ],
         "type": "object",
         "properties": {
@@ -118,6 +119,9 @@
           "password": {
             "maxLength": 2147483647,
             "minLength": 5,
+            "type": "string"
+          },
+          "role": {
             "type": "string"
           }
         }

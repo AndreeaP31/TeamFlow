@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from './pages/login/login.component';
 import {RegisterComponent} from './pages/register/register.component';
 import {ActivateAccountComponent} from './pages/activate-account/activate-account.component';
+import {TaskManagerHomeComponent} from './pages/task-manager-home/task-manager-home.component';
+import {HomeComponent} from './pages/home/home.component';
+import {TeamMemberHomeComponent} from './pages/team-member-home/team-member-home.component';
 
 const routes: Routes = [
   {
@@ -16,6 +19,18 @@ const routes: Routes = [
   {
     path:'activate-account',
     component: ActivateAccountComponent
+  },
+  {
+    path:'home',
+    component: HomeComponent
+  },
+  {
+    path:'task-manager-home',
+    component: TaskManagerHomeComponent
+  },
+  {
+    path:'team-member-home',
+    component: TeamMemberHomeComponent
   }
 ];
 

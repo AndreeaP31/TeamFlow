@@ -11,8 +11,13 @@ import {AuthenticationService} from '../../services/services/authentication.serv
 })
 export class RegisterComponent {
 
-  registerRequest: RegistrationRequest ={email:'',firstname:'', lastname:'',password:''}
+  registerRequest: RegistrationRequest ={email:'',firstname:'', lastname:'',password:'', role:''}
   errorMsg:Array<string>=[];
+  selectedRole: 'TASK_MANAGER' | 'TEAM_MEMBER' = 'TEAM_MEMBER';
+
+  selectRole(role: 'TASK_MANAGER' | 'TEAM_MEMBER') {
+    this.selectedRole = role;
+  }
 
   constructor(
     private router: Router,
