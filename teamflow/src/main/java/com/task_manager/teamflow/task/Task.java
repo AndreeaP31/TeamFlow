@@ -1,16 +1,18 @@
-package com.task_manager.teamflow.project;
+package com.task_manager.teamflow.task;
 
-import com.task_manager.teamflow.task.Task;
+import com.task_manager.teamflow.project.Project;
+import com.task_manager.teamflow.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import com.task_manager.teamflow.user.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,9 +21,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="_project")
+@Table(name = "_task")
 @EntityListeners(AuditingEntityListener.class)
-public class Project {
+public class Task {
+
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue
     private Long id;
@@ -29,21 +33,21 @@ public class Project {
     private String title;
     private String description;
 
+    private LocalDate deadline;
+
+    @Enumerated(EnumType.STRING)
+    private TaskStatus status;
+
     @ManyToOne
-    private User owner;
+    private Project project;
 
     @ManyToMany
-    private List<User> teamMembers;
-
-    @OneToMany(mappedBy="project", cascade= CascadeType.ALL)
-    private List<Task> tasks;
+    private List<User> assignees;
 
     @CreatedDate
     private LocalDateTime createdAt;
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
-
-
 
 }

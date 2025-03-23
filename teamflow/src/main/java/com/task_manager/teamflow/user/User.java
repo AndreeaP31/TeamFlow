@@ -4,6 +4,7 @@ import com.task_manager.teamflow.role.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 
 
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
