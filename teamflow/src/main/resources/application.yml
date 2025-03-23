@@ -6,7 +6,7 @@ spring:
       max-file-size: 50MB
 springdoc:
   default-produces-media-type: application/json
-
+  override-with-generic-response: false
 server:
   servlet:
     context-path: /api/v1

@@ -17,7 +17,8 @@ import java.util.function.Function;
 public class JwtService {
 
     private long jwtExpiration=8640000;
-    private String secretKey="BRAL7IQW0FLzuDBGJ8GMOU";
+    private String secretKey = "9HwQ2vT5uN8sZkRqL7yPfBvXxAeYqUw1KdOmBgVtRnYxHsLdPqCmZtXaEbNr5UgZ3";
+
     public String generateToken(UserDetails userDetails){
         return generateToken(new HashMap<>(), userDetails);
     }

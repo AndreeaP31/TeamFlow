@@ -1,0 +1,25 @@
+.register-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4b3b78;
+  position: relative;
+}
+
+.register-container {
+  background-color: #d9cfff;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.custom-btn {
+  background-color: #7b61ff;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+}

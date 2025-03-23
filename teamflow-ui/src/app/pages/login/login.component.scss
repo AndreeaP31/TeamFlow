@@ -1,0 +1,36 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;       // vertical centrare
+  justify-content: center;   // orizontal centrare
+  background-color: #4b3b78; // mov închis
+}
+
+.login-container {
+  background-color: #d9cfff; // mov deschis
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  transform: translateY(-100px);
+}
+
+.custom-btn {
+  background-color: #7b61ff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #6a50e6;
+  }
+}
