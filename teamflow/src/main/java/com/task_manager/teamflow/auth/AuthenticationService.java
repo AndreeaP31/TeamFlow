@@ -88,6 +88,7 @@ public class AuthenticationService {
         return codeBuilder.toString();
     }
 
+    @Transactional
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
 
         var auth=authenticationManager.authenticate(
@@ -96,10 +97,12 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
+        var user = (User) auth.getPrincipal();
         var claims = new HashMap<String, Object>();
-        var user= ((User)auth.getPrincipal());
-        claims.put("fullNmae", user.fullName());
-        var jwtToken= jwtService.generateToken(claims,user);
+        claims.put("fullName", user.fullName());
+
+        var jwtToken = jwtService.generateToken(claims, user);
+
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)

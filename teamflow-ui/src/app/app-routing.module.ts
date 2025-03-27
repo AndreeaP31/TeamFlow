@@ -6,6 +6,7 @@ import {ActivateAccountComponent} from './pages/activate-account/activate-accoun
 import {TaskManagerHomeComponent} from './pages/task-manager-home/task-manager-home.component';
 import {HomeComponent} from './pages/home/home.component';
 import {TeamMemberHomeComponent} from './pages/team-member-home/team-member-home.component';
+import {CreateProjectComponent} from './pages/create-project/create-project.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,11 @@ const routes: Routes = [
   {
     path:'team-member-home',
     component: TeamMemberHomeComponent
-  }
+  },
+  {
+    path:'create-project',
+    component: CreateProjectComponent
+  },
 ];
 
 @NgModule({

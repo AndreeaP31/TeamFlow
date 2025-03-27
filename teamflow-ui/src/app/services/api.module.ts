@@ -6,6 +6,8 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
+import { TaskControllerService } from './services/task-controller.service';
+import { ProjectsService } from './services/projects.service';
 import { AuthenticationService } from './services/authentication.service';
 
 /**
@@ -16,6 +18,8 @@ import { AuthenticationService } from './services/authentication.service';
   exports: [],
   declarations: [],
   providers: [
+    TaskControllerService,
+    ProjectsService,
     AuthenticationService,
     ApiConfiguration
   ],

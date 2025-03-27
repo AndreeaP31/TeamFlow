@@ -1,5 +1,6 @@
 package com.task_manager.teamflow.security;
 
+import com.task_manager.teamflow.user.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -32,6 +33,7 @@ public class JwtService {
         var authorities=userDetails.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
+                .map(auth -> auth.startsWith("ROLE_") ? auth : "ROLE_" + auth)
                 .toList();
         return Jwts
                 .builder()
@@ -55,6 +57,9 @@ public class JwtService {
         final String username=extractUsername(token);
         return (username.equals(userDetails.getUsername())&& !isTokenExpired(token));
     }
+
+
+
 
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
@@ -82,4 +87,5 @@ public class JwtService {
                 .getBody();
 
     }
+
 }

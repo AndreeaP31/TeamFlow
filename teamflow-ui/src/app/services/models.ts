@@ -4,4 +4,11 @@
 
 export { AuthenticationRequest } from './models/authentication-request';
 export { AuthenticationResponse } from './models/authentication-response';
+export { GrantedAuthority } from './models/granted-authority';
+export { Project } from './models/project';
+export { ProjectRequest } from './models/project-request';
 export { RegistrationRequest } from './models/registration-request';
+export { Role } from './models/role';
+export { Task } from './models/task';
+export { TaskRequest } from './models/task-request';
+export { User } from './models/user';

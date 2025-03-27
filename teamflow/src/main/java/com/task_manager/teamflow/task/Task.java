@@ -1,5 +1,6 @@
 package com.task_manager.teamflow.task;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.task_manager.teamflow.project.Project;
 import com.task_manager.teamflow.user.User;
 import jakarta.persistence.*;
@@ -38,7 +39,8 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     private Project project;
 
     @ManyToMany

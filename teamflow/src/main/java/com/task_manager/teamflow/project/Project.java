@@ -1,5 +1,6 @@
 package com.task_manager.teamflow.project;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.task_manager.teamflow.task.Task;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,13 +30,14 @@ public class Project {
     private String title;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User owner;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> teamMembers;
 
-    @OneToMany(mappedBy="project", cascade= CascadeType.ALL)
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Task> tasks;
 
     @CreatedDate

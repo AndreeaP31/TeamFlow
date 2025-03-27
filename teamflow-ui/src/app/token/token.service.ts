@@ -11,6 +11,7 @@ export class TokenService {
   get token(){
     return localStorage.getItem('token') as string;
   }
+
   get payload(): any {
     try {
       const base64 = this.token.split('.')[1];
@@ -33,14 +34,16 @@ export class TokenService {
   }
 
   isTaskManager(): boolean {
-    return this.roles.includes('TASK_MANAGER');
+    return this.roles.includes('ROLE_TASK_MANAGER');
   }
 
   isTeamMember(): boolean {
-    return this.roles.includes('TEAM_MEMBER');
+    return this.roles.includes('ROLE_TEAM_MEMBER');
   }
+
 
   clear(): void {
     localStorage.removeItem('token');
   }
+
 }

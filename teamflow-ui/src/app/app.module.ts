@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors} from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import {FormsModule} from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
@@ -12,6 +12,9 @@ import {CodeInputModule} from "angular-code-input";
 import { TaskManagerHomeComponent } from './pages/task-manager-home/task-manager-home.component';
 import { TeamMemberHomeComponent } from './pages/team-member-home/team-member-home.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CreateProjectComponent } from './pages/create-project/create-project.component';
+import {authInterceptorFn} from './auth/interceptors/auth.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,16 +24,20 @@ import { HomeComponent } from './pages/home/home.component';
     ActivateAccountComponent,
     TaskManagerHomeComponent,
     TeamMemberHomeComponent,
-    HomeComponent
+    HomeComponent,
+    CreateProjectComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule,
         FormsModule,
         CodeInputModule
     ],
-  providers: [],
+  providers: [
+    provideHttpClient(
+      withInterceptors([authInterceptorFn]) // ✅ înregistrare corectă pentru injectia modernă
+    )
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
