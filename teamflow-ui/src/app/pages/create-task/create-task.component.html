@@ -1,0 +1,35 @@
+<h2>Adaugă un task</h2>
+
+<form (ngSubmit)="create()">
+  <label>Titlu</label>
+  <input type="text" [(ngModel)]="task.title" name="title" required>
+
+  <label>Descriere</label>
+  <textarea [(ngModel)]="task.description" name="description" required></textarea>
+
+  <label>Deadline</label>
+  <input type="date" [(ngModel)]="task.deadline" name="deadline" required>
+
+  <label>Status</label>
+  <select [(ngModel)]="task.status" name="status" required>
+    <option value="TODO">Not Started</option>
+    <option value="IN_PROGRESS">In Progress</option>
+    <option value="IN_REVIEW">In Review</option>
+    <option value="FINISHED">Finished</option>
+  </select>
+
+  <label>Emailuri responsabili</label>
+  <div *ngFor="let email of safeAssigneeEmails; let i = index; trackBy: trackByIndex">
+    <input type="email"
+           [(ngModel)]="task.assigneeEmails![i]"
+           name="assigneeEmail{{i}}"
+           required
+           [ngModelOptions]="{ standalone: true }">
+    <button type="button" (click)="removeEmailField(i)">🗑️</button>
+  </div>
+  <button type="button" (click)="addEmailField()">+ Adaugă responsabil</button>
+
+  <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+
+  <button type="submit">Creează task</button>
+</form>

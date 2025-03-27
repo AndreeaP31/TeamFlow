@@ -9,6 +9,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ project.title }}</h5>
         <p class="card-text">{{ project.description }}</p>
+        <button (click)="goToCreateTask(project.id!)">Adaugă task</button>
         <p class="text-muted">Team members: {{ project.teamMembers?.length || 0 }}</p>
       </div>
     </div>

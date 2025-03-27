@@ -7,6 +7,7 @@ import {TaskManagerHomeComponent} from './pages/task-manager-home/task-manager-h
 import {HomeComponent} from './pages/home/home.component';
 import {TeamMemberHomeComponent} from './pages/team-member-home/team-member-home.component';
 import {CreateProjectComponent} from './pages/create-project/create-project.component';
+import {CreateTaskComponent} from './pages/create-task/create-task.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:'activate-account',
     component: ActivateAccountComponent
+  },
+  {
+    path: 'projects/:id/add-task',
+    component: CreateTaskComponent
   },
   {
     path:'home',

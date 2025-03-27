@@ -1,1 +1,33 @@
-<p>create-project works!</p>
+<h2>Creează un proiect nou</h2>
+
+<form (ngSubmit)="createProject()">
+  <div>
+    <label>Titlu</label>
+    <input type="text" [(ngModel)]="project.title" name="title" required>
+  </div>
+
+  <div>
+    <label>Descriere</label>
+    <textarea [(ngModel)]="project.description" name="description" required></textarea>
+  </div>
+
+  <div>
+    <label>Membri echipă (emailuri)</label>
+    <div *ngFor="let email of project.teamEmails; let i = index; trackBy: trackByIndex">
+      <input type="email"
+             [(ngModel)]="project.teamEmails[i]"
+             name="email{{i}}"
+             required
+             [ngModelOptions]="{standalone: true}">
+      <button type="button" (click)="removeEmailField(i)">🗑️</button>
+    </div>
+
+  </div>
+
+
+
+
+  <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+
+  <button type="submit">Creează proiect</button>
+</form>

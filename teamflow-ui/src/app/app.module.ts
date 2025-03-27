@@ -15,6 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CreateProjectComponent } from './pages/create-project/create-project.component';
 import {authInterceptorFn} from './auth/interceptors/auth.interceptor';
 import { RouterModule } from '@angular/router';
+import { CreateTaskComponent } from './pages/create-task/create-task.component';
 
 @NgModule({
   declarations: [

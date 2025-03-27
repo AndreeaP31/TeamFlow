@@ -37,6 +37,16 @@ export class TaskManagerHomeComponent {
       }
     });
   }
+  goToCreateTask(projectId?: number) {
+    if (projectId === undefined) {
+      console.warn('ID proiect lipsă');
+      return;
+    }
+
+    this.router.navigate([`/projects/${projectId}/add-task`]);
+  }
+
+
 
   goToCreateProject() {
     this.router.navigate(['/create-project']);
