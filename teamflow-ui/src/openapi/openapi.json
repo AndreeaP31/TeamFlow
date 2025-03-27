@@ -101,36 +101,6 @@
         }
       }
     },
-    "/auth/refresh-token": {
-      "post": {
-        "tags": [
-          "Authentication"
-        ],
-        "operationId": "refreshToken",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/auth/authenticate": {
       "post": {
         "tags": [
@@ -154,6 +124,53 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthenticationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{taskId}/status": {
+      "patch": {
+        "tags": [
+          "task-controller"
+        ],
+        "operationId": "updateStatus",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "TODO",
+                  "IN_PROGRESS",
+                  "DONE",
+                  "BLOCKED"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
                 }
               }
             }
@@ -423,19 +440,19 @@
           "fullName": {
             "type": "string"
           },
-          "username": {
-            "type": "string"
-          },
           "authorities": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GrantedAuthority"
             }
           },
-          "accountNonExpired": {
-            "type": "boolean"
+          "username": {
+            "type": "string"
           },
           "credentialsNonExpired": {
+            "type": "boolean"
+          },
+          "accountNonExpired": {
             "type": "boolean"
           },
           "accountNonLocked": {
@@ -483,6 +500,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/User"
+            }
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Task"
             }
           },
           "createdAt": {

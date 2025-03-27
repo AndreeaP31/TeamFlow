@@ -3,10 +3,19 @@
 <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
 
 <div *ngIf="tasks.length === 0">Nu ai taskuri asignate.</div>
-
 <div *ngFor="let task of tasks" class="task-card">
   <h3>{{ task.title }}</h3>
   <p>{{ task.description }}</p>
-  <p><strong>Status:</strong> {{ task.status }}</p>
   <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+
+  <label for="status-{{ task.id }}"><strong>Status:</strong></label>
+  <select
+    [id]="'status-' + task.id"
+    [ngModel]="task.status"
+    (ngModelChange)="updateTaskStatus(task.id!, $event)"
+    name="status-{{ task.id }}">
+    <option *ngFor="let status of statusOptions" [value]="status">
+      {{ status }}
+    </option>
+  </select>
 </div>

@@ -40,6 +40,22 @@ public class TaskService {
         return taskRepository.findByProjectId(projectId);
     }
 
+    @Transactional
+    public Task updateTaskStatus(Long taskId, TaskStatus newStatus, String userEmail) {
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
+
+        boolean isAssignee = task.getAssignees().stream()
+                .anyMatch(user -> user.getEmail().equals(userEmail));
+
+        if (!isAssignee) {
+            throw new RuntimeException("Unauthorized: You are not an assignee for this task.");
+        }
+
+        task.setStatus(newStatus);
+        return taskRepository.save(task);
+    }
+
     public List<Task> getTasksByAssigneeEmail(String email){
         User user = userRepository.findByEmail(email)
                 .orElseThrow(()-> new RuntimeException("User not found"));

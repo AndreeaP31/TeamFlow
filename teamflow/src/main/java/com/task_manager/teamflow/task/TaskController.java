@@ -31,4 +31,14 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getTasksByAssigneeEmail(principal.getName()));
 
     }
+    @PatchMapping("/{taskId}/status")
+    public ResponseEntity<Task> updateStatus(
+            @PathVariable Long taskId,
+            @RequestBody TaskStatus newStatus, // ✅ direct TaskStatus (enum)
+            Principal principal
+    ) {
+        Task updatedTask = taskService.updateTaskStatus(taskId, newStatus, principal.getName());
+        return ResponseEntity.ok(updatedTask);
+    }
+
 }

@@ -12,7 +12,8 @@ export class TeamMemberHomeComponent {
   tasks: Task[] = [];
   errorMsg = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit(): void {
     getMyTasks(this.http, 'http://localhost:8088/api/v1').subscribe({
@@ -25,4 +26,22 @@ export class TeamMemberHomeComponent {
       }
     });
   }
+  statusOptions: NonNullable<Task['status']>[] = ['TODO', 'IN_PROGRESS', 'DONE', 'BLOCKED'];
+
+  updateTaskStatus(taskId: number, newStatus: NonNullable<Task['status']>) {
+    this.http.patch(`http://localhost:8088/api/v1/tasks/${taskId}/status`, JSON.stringify(newStatus), {
+      headers: { 'Content-Type': 'application/json' }
+    }).subscribe({
+      next: () => {
+        const task = this.tasks.find(t => t.id === taskId);
+        if (task) task.status = newStatus;
+      },
+      error: (err) => {
+        console.error(`Eroare la actualizarea statusului task-ului ${taskId}:`, err);
+        alert('Eroare la actualizare!');
+      }
+    });
+  }
+
+
 }

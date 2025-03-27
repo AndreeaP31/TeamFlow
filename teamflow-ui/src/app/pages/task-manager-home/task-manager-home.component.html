@@ -10,8 +10,22 @@
         <h5 class="card-title">{{ project.title }}</h5>
         <p class="card-text">{{ project.description }}</p>
         <button (click)="goToCreateTask(project.id!)">Adaugă task</button>
-        <p class="text-muted">Team members: {{ project.teamMembers?.length || 0 }}</p>
+
+        <p class="text-muted">Team members:</p>
+        <ul>
+          <li *ngFor="let member of project.teamMembers">
+            {{ member.firstname }} {{ member.lastname }} ({{ member.email }})
+          </li>
+        </ul>
+
+        <p class="text-muted">Task-uri:</p>
+        <ul>
+          <li *ngFor="let task of project.tasks">
+            {{ task.title }} – {{ task.status }} (deadline: {{ task.deadline }})
+          </li>
+        </ul>
       </div>
+
     </div>
   </div>
 

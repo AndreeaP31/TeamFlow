@@ -8,14 +8,17 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { Task } from '../../models/task';
 
-export interface RefreshToken$Params {
-      body: string
+export interface UpdateStatus$Params {
+  taskId: number;
+      body: 'TODO' | 'IN_PROGRESS' | 'DONE' | 'BLOCKED'
 }
 
-export function refreshToken(http: HttpClient, rootUrl: string, params: RefreshToken$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
-  const rb = new RequestBuilder(rootUrl, refreshToken.PATH, 'post');
+export function updateStatus(http: HttpClient, rootUrl: string, params: UpdateStatus$Params, context?: HttpContext): Observable<StrictHttpResponse<Task>> {
+  const rb = new RequestBuilder(rootUrl, updateStatus.PATH, 'patch');
   if (params) {
+    rb.path('taskId', params.taskId, {});
     rb.body(params.body, 'application/json');
   }
 
@@ -24,9 +27,9 @@ export function refreshToken(http: HttpClient, rootUrl: string, params: RefreshT
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<string>;
+      return r as StrictHttpResponse<Task>;
     })
   );
 }
 
-refreshToken.PATH = '/auth/refresh-token';
+updateStatus.PATH = '/tasks/{taskId}/status';

@@ -37,7 +37,7 @@ public class Project {
     private List<User> teamMembers;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
-    @JsonIgnore
+   // @JsonIgnore
     private List<Task> tasks;
 
     @CreatedDate

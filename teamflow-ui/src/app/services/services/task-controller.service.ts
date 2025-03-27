@@ -18,6 +18,8 @@ import { GetByProject$Params } from '../fn/task-controller/get-by-project';
 import { getMyTasks } from '../fn/task-controller/get-my-tasks';
 import { GetMyTasks$Params } from '../fn/task-controller/get-my-tasks';
 import { Task } from '../models/task';
+import { updateStatus } from '../fn/task-controller/update-status';
+import { UpdateStatus$Params } from '../fn/task-controller/update-status';
 
 @Injectable({ providedIn: 'root' })
 export class TaskControllerService extends BaseService {
@@ -46,6 +48,31 @@ export class TaskControllerService extends BaseService {
    */
   createTask(params: CreateTask$Params, context?: HttpContext): Observable<Task> {
     return this.createTask$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Task>): Task => r.body)
+    );
+  }
+
+  /** Path part for operation `updateStatus()` */
+  static readonly UpdateStatusPath = '/tasks/{taskId}/status';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `updateStatus()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  updateStatus$Response(params: UpdateStatus$Params, context?: HttpContext): Observable<StrictHttpResponse<Task>> {
+    return updateStatus(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `updateStatus$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  updateStatus(params: UpdateStatus$Params, context?: HttpContext): Observable<Task> {
+    return this.updateStatus$Response(params, context).pipe(
       map((r: StrictHttpResponse<Task>): Task => r.body)
     );
   }
