@@ -6,7 +6,7 @@
 
 ## 📑 Table of Contents
 1. [Project Overview](#project-overview)
-2. [Architecture](#architecture)
+2. [ 🏗️ Architecture](#architecture)
 3. [Installation](#installation)
 4. [Usage](#usage)
 5. [Features](#features)
