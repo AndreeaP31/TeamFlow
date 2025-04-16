@@ -6,7 +6,7 @@
 
 ## 📑 Table of Contents
 1. [Project Overview](#project-overview)
-2. [🏗️ Architecture](#architecture)
+2. [Architecture](#architecture)
 3. [Installation](#installation)
 4. [Usage](#usage)
 5. [Features](#features)
@@ -24,7 +24,7 @@ Authentication is managed using JWT tokens, with email confirmation via **MailDe
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 - **Frontend**: Angular 17 
 - **Backend**: Java Spring Boot (REST API, role-based access)
