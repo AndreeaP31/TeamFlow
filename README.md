@@ -16,7 +16,7 @@
 
 ---
 
-## 📘 Project Overview
+## Project Overview
 
 TeamFlow allows Task Managers to create teams and projects, assign tasks, and track their status in real-time. Team Members can collaborate within assigned projects, view their tasks, and update progress across four defined stages: `Not Started`, `In Progress`, `In Review`, `Finished`.
 
@@ -34,7 +34,7 @@ Authentication is managed using JWT tokens, with email confirmation via **MailDe
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### Prerequisites
 - Java 17+
@@ -79,7 +79,7 @@ Angular will run at: `http://localhost:4200`
 
 ---
 
-## 🚀 Usage
+## Usage
 
 - Register a new account — confirmation email will be sent via MailDev
 - Log in with confirmed account
@@ -92,7 +92,7 @@ Angular will run at: `http://localhost:4200`
 
 ---
 
-## ✅ Features
+## Features
 
 - 🔒 JWT-based authentication & role-based authorization
 - 📧 Email confirmation using MailDev
@@ -104,7 +104,7 @@ Angular will run at: `http://localhost:4200`
 
 ---
 
-## 🧪 Technologies Used
+## Technologies Used
 
 - **Java 17** + **Spring Boot**
 - **Angular 17**
@@ -116,12 +116,12 @@ Angular will run at: `http://localhost:4200`
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 ---
 
-## 👤 Author
+## Author
 
-- **Andreea Popovici** – Full Stack Developer  
+- **Andreea Popovici** – Full Stack 
   [GitHub](https://github.com/AndreeaP31)
 
